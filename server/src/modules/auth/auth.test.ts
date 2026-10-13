@@ -216,3 +216,55 @@ describe('GET /api/auth/me', () => {
     expect(response.status).toBe(401)
   })
 })
+
+describe('Cookie-based credentialed requests', () => {
+  it('sets a cookie that a protected route then accepts', async () => {
+    const register = await request(app).post('/api/auth/register').send(credentials)
+    const cookie = register.get('Set-Cookie') ?? []
+
+    // The same cookie the browser would replay on a credentialed request.
+    const protectedCall = await request(app).get('/api/dashboard').set('Cookie', cookie)
+    expect(protectedCall.status).toBe(200)
+  })
+
+  it('rejects the same protected route when the cookie is not sent', async () => {
+    await request(app).post('/api/auth/register').send(credentials)
+
+    // This is what a browser does when it withholds a cross-site cookie.
+    const protectedCall = await request(app).get('/api/dashboard')
+    expect(protectedCall.status).toBe(401)
+  })
+
+  it('declares the attributes a browser needs to store and replay the cookie', async () => {
+    const response = await request(app).post('/api/auth/register').send(credentials)
+    const authCookie = (response.get('Set-Cookie') ?? []).find((c) => c.startsWith('token='))
+
+    expect(authCookie).toBeDefined()
+    // Not readable by JavaScript, and scoped to the whole API.
+    expect(authCookie).toContain('HttpOnly')
+    expect(authCookie).toContain('Path=/')
+    // SameSite must always be stated; its value depends on the deployment and
+    // is unit-tested in config/cookies.test.ts.
+    expect(authCookie).toMatch(/SameSite=(Lax|None)/)
+  })
+
+  it('clears the cookie with the same attributes it was set with', async () => {
+    const register = await request(app).post('/api/auth/register').send(credentials)
+    const setCookie = (register.get('Set-Cookie') ?? []).find((c) => c.startsWith('token=')) ?? ''
+
+    const logout = await request(app).post('/api/auth/logout')
+    const cleared = (logout.get('Set-Cookie') ?? []).find((c) => c.startsWith('token=')) ?? ''
+
+    // A mismatch in any of these leaves the cookie in the browser.
+    for (const attribute of ['HttpOnly', 'Path=/']) {
+      expect(setCookie).toContain(attribute)
+      expect(cleared).toContain(attribute)
+    }
+
+    const sameSiteOf = (value: string) => /SameSite=(\w+)/.exec(value)?.[1]
+    expect(sameSiteOf(cleared)).toBe(sameSiteOf(setCookie))
+
+    const secureOf = (value: string) => value.includes('Secure')
+    expect(secureOf(cleared)).toBe(secureOf(setCookie))
+  })
+})
