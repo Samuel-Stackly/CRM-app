@@ -1,0 +1,17 @@
+.page {
+  padding-bottom: var(--space-8);
+}
+
+/* The design puts the create action in the topbar; the shared topbar is
+   generic, so it sits at the head of the page content instead. */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-5);
+}
+
+@media (max-width: 720px) {
+  .actions > * {
+    width: 100%;
+  }
+}

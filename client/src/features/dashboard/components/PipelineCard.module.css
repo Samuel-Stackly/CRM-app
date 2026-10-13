@@ -1,0 +1,80 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.stage {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-soft);
+}
+
+.track {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-rail);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  transition: width var(--transition);
+}
+
+/* Closed stages read as settled rather than in-flight. */
+.won {
+  background: var(--color-success);
+}
+
+.lost {
+  background: var(--color-danger);
+}
+
+.amount {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  text-align: right;
+  min-width: 72px;
+}
+
+.count {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.summaryValue {
+  font-weight: var(--weight-semibold);
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 72px 1fr;
+    row-gap: var(--space-1);
+  }
+
+  .amount {
+    grid-column: 2;
+    text-align: left;
+  }
+}

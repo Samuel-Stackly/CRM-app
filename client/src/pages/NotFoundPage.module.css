@@ -1,0 +1,17 @@
+.panel {
+  display: grid;
+  place-items: center;
+  gap: var(--space-3);
+  min-height: 320px;
+  padding: var(--space-10);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.text {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  max-width: 42ch;
+}

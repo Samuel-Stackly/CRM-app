@@ -1,0 +1,21 @@
+/* No error state was supplied in the design set; built from the same tokens. */
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex: 1;
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  color: var(--color-ink-soft);
+}
+
+.icon {
+  color: var(--color-danger);
+}
+
+.message {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}

@@ -1,0 +1,15 @@
+.page {
+  padding-bottom: var(--space-8);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-5);
+}
+
+@media (max-width: 860px) {
+  .actions > * {
+    width: 100%;
+  }
+}

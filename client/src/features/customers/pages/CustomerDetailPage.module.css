@@ -1,0 +1,197 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--right-rail-width);
+  gap: var(--space-6);
+  align-items: start;
+  padding-bottom: var(--space-8);
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Banner with the avatar overlapping its lower-left, as the design shows. */
+.banner {
+  position: relative;
+  height: 205px;
+  background: linear-gradient(120deg, #eef2f7 0%, #f6f9fc 45%, #e9eef5 100%);
+}
+
+.avatar {
+  position: absolute;
+  left: var(--space-6);
+  bottom: -28px;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  font-size: 30px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+}
+
+.bannerActions {
+  position: absolute;
+  right: var(--space-6);
+  bottom: var(--space-5);
+  display: flex;
+  gap: var(--space-3);
+}
+
+.circleButton {
+  display: grid;
+  place-items: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  border: none;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.circleButton:hover {
+  color: var(--color-primary);
+}
+
+.danger:hover {
+  color: var(--color-danger);
+}
+
+.body {
+  padding: var(--space-10) var(--space-6) var(--space-6);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.name {
+  font-size: var(--text-xl);
+}
+
+.company {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+/* Right rail, matching the dashboard's tinted panel. */
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  background: var(--color-rail);
+}
+
+.railHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.railTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.dealRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.dealRow:first-of-type {
+  border-top: none;
+}
+
+.dealMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.dealTitle {
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dealMeta {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-soft);
+  color: #b4545b;
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+
+  .banner {
+    height: 150px;
+  }
+
+  .avatar {
+    width: 76px;
+    height: 76px;
+    font-size: 24px;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+  }
+
+  .footer > * {
+    width: 100%;
+  }
+}

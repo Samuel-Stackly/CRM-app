@@ -1,0 +1,131 @@
+.wrapper {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.head th {
+  padding: var(--space-5);
+  text-align: left;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.row {
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: var(--color-canvas);
+}
+
+.row td {
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-ink-soft);
+  vertical-align: middle;
+}
+
+.title {
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+}
+
+.value {
+  font-weight: var(--weight-semibold);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+.iconButton {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-muted);
+}
+
+.iconButton:hover {
+  background: var(--color-rail);
+  color: var(--color-primary);
+}
+
+.danger:hover {
+  color: var(--color-danger);
+}
+
+.state {
+  padding: var(--space-8) var(--space-5);
+  display: flex;
+  justify-content: center;
+}
+
+.cards {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .scroll {
+    display: none;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    background: none;
+    text-align: left;
+  }
+
+  .card:last-child {
+    border-bottom: none;
+  }
+
+  .cardMain {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cardMeta {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

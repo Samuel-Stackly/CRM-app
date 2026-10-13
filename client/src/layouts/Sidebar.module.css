@@ -1,0 +1,98 @@
+.rail {
+  grid-area: rail;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  width: var(--rail-width);
+  padding-top: var(--space-5);
+  background: var(--color-canvas);
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--color-ink);
+  color: #fff;
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition), color var(--transition);
+}
+
+.item:hover {
+  color: var(--color-primary);
+}
+
+.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.active:hover {
+  color: #fff;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* Below the tablet breakpoint the rail becomes a bottom bar: 90px of fixed
+   chrome plus a 418px right rail cannot coexist with a 360px viewport.
+   No responsive frames were supplied, so this is our own adaptation. */
+@media (max-width: 900px) {
+  .rail {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 20;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    padding: 0 var(--space-4);
+    gap: var(--space-2);
+    background: var(--color-surface);
+    box-shadow: 0 -2px 12px rgba(4, 59, 94, 0.08);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: var(--space-2);
+  }
+
+  .item {
+    width: 40px;
+    height: 40px;
+    box-shadow: none;
+  }
+}

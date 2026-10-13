@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Form-level failure, distinct from the per-field messages. */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-soft);
+  color: #b4545b;
+  font-size: var(--text-sm);
+}
+
+.submit {
+  margin-top: var(--space-2);
+}

@@ -1,0 +1,51 @@
+.topbar {
+  grid-area: topbar;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--topbar-height);
+  padding: 0 var(--page-gutter);
+}
+
+.title {
+  font-size: var(--text-2xl);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.iconButton {
+  display: grid;
+  place-items: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  border: none;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.iconButton:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    height: 72px;
+  }
+
+  .title {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 400px) {
+  .topbar {
+    padding: 0 16px;
+  }
+}

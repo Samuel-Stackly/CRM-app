@@ -1,0 +1,68 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 104px auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+}
+
+.date {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* Overdue rows render the date in the danger tone, as the design shows. */
+.overdue {
+  color: var(--color-danger);
+}
+
+.alert {
+  color: var(--color-danger);
+}
+
+.title {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.summary {
+  display: flex;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.count {
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+}
+
+.countDanger {
+  font-weight: var(--weight-semibold);
+  color: var(--color-danger);
+}
+
+/* The supplied export aligns this widget's empty state top-left, unlike the
+   centred empty states elsewhere. Preserved deliberately. */
+.emptyTopLeft {
+  align-self: flex-start;
+  padding-top: var(--space-2);
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 88px auto 1fr;
+  }
+}

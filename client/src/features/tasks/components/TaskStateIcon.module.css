@@ -1,0 +1,42 @@
+/* Three states from the design's checkbox column:
+   teal check = complete on time, salmon check = completed late,
+   salmon octagon = incomplete and overdue, empty box = still open. */
+.button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  transition: transform var(--transition);
+}
+
+.button:hover:not(:disabled) {
+  transform: scale(1.08);
+}
+
+.button:disabled {
+  cursor: wait;
+}
+
+.done {
+  background: var(--color-success);
+}
+
+.doneLate {
+  background: var(--color-danger);
+}
+
+.overdue {
+  color: var(--color-danger);
+  background: transparent;
+}
+
+.open {
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+}

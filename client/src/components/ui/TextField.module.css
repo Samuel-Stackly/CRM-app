@@ -1,0 +1,42 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+}
+
+.input {
+  height: var(--input-height);
+  padding: 0 var(--space-4);
+  background: var(--color-rail);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-ink);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+/* The design supplies no error state; this is our own, built from the tokens. */
+.invalid {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+}
+
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+}

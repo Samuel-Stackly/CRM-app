@@ -1,0 +1,42 @@
+.panel {
+  display: grid;
+  place-items: center;
+  gap: var(--space-4);
+  max-width: 540px;
+  margin: var(--space-10) auto;
+  padding: var(--space-10) var(--space-8);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.emoji {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: var(--color-warm);
+  font-size: 34px;
+}
+
+.eyebrow {
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.title {
+  font-size: var(--text-4xl);
+}
+
+.body {
+  color: var(--color-ink-soft);
+}
+
+.action {
+  width: 100%;
+  margin-top: var(--space-2);
+}

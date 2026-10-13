@@ -1,0 +1,39 @@
+/* Four regions from the design: rail, topbar, main canvas, right rail. */
+.shell {
+  display: grid;
+  grid-template-areas:
+    'rail topbar'
+    'rail main';
+  grid-template-columns: var(--rail-width) 1fr;
+  grid-template-rows: var(--topbar-height) 1fr;
+  min-height: 100vh;
+  background: var(--color-canvas);
+}
+
+.main {
+  grid-area: main;
+  padding: 0 var(--page-gutter) var(--space-10);
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-areas:
+      'topbar'
+      'main';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .main {
+    /* Clears the bottom bar the rail collapses into. */
+    padding-bottom: 88px;
+  }
+}
+
+@media (max-width: 400px) {
+  .main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

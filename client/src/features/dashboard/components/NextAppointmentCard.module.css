@@ -1,0 +1,97 @@
+/* The design's primary card: solid brand fill, white text, decorative curve. */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 385px;
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary);
+  color: #fff;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  bottom: -110px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: #fff;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  flex: none;
+}
+
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.name {
+  font-weight: var(--weight-semibold);
+}
+
+.sub {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.strong {
+  font-weight: var(--weight-semibold);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: auto;
+}
+
+.cta {
+  background: #fff;
+  color: var(--color-primary);
+}

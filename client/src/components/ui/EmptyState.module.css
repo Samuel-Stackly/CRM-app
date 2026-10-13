@@ -1,0 +1,30 @@
+/* Pattern from the supplied no-results exports: muted line icon, muted
+   sentence, centred in the space the data would have filled. */
+.empty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.center {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  padding: var(--space-8) var(--space-4);
+  gap: var(--space-2);
+}
+
+.inline {
+  padding: var(--space-3) 0;
+}
+
+.onPrimary {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.action {
+  margin-top: var(--space-4);
+}
