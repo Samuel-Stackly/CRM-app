@@ -1,0 +1,17 @@
+{
+  "activeApp": "crm",
+  "apps": {
+    "crm": {
+      "label": "Mini CRM",
+      "dir": "apps/crm",
+      "clientPort": 5173,
+      "serverPort": 5000
+    },
+    "app2": {
+      "label": "App 2",
+      "dir": "apps/app2",
+      "clientPort": 5174,
+      "serverPort": 5001
+    }
+  }
+}
