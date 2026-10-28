@@ -1,0 +1,97 @@
+/**
+ * ShopDesk design tokens — SnowUI.
+ *
+ * Every value here was measured from the exported Figma SVGs under
+ * docs/App2/Designs, not estimated: the accent hexes are read out of the SVG
+ * source, and the surface values are sampled pixels from a 1440x1708 render of
+ * `Dashboard Overview-3.svg` (light) and `Dashboard Overview-2.svg` (dark).
+ *
+ * SnowUI builds almost its entire neutral range from black or white at low
+ * alpha over the canvas, which is why the greys are expressed as alpha ramps
+ * rather than opaque hexes — that is what makes one set of rules work in both
+ * themes. Only the canvas and the card surface are opaque.
+ */
+
+@theme {
+  /* --- Accents ---------------------------------------------------------
+     Light-theme values. The dark theme overrides these below; everything
+     else in the app references the token, never the literal. */
+  --color-accent: #007aff;
+  --color-accent-purple: #af52de;
+  --color-accent-green: #34c759;
+  --color-accent-red: #ff3b30;
+  --color-accent-orange: #ff9500;
+  --color-accent-teal: #00c7be;
+
+  /* --- Surfaces -------------------------------------------------------- */
+  --color-canvas: #f5f5f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fafafa;
+
+  /* --- Ink -------------------------------------------------------------
+     SnowUI uses exactly two text weights: full black and black at 40%. */
+  --color-ink: rgb(0 0 0);
+  --color-ink-muted: rgb(0 0 0 / 0.4);
+
+  /* --- Neutral alpha ramp ----------------------------------------------
+     0.04 = chart bar placeholders, 0.08 = hover, 0.1/0.2 = borders. */
+  --color-fill-subtle: rgb(0 0 0 / 0.02);
+  --color-fill: rgb(0 0 0 / 0.04);
+  --color-fill-strong: rgb(0 0 0 / 0.08);
+  --color-line: rgb(0 0 0 / 0.1);
+  --color-line-strong: rgb(0 0 0 / 0.2);
+
+  /* --- Stat tiles -------------------------------------------------------
+     The four tiles alternate an accent gradient and a neutral one, both
+     running top-left to bottom-right. */
+  --color-tile-accent-from: #007aff;
+  --color-tile-accent-to: #5cacff;
+  --color-tile-neutral-from: #1f1f1f;
+  --color-tile-neutral-to: #4d4d4d;
+  --color-tile-neutral-ink: #ffffff;
+
+  /* --- Geometry ---------------------------------------------------------
+     Measured off the export: 212px rail, 16px card radius, 28px gutter. */
+  --radius-card: 16px;
+  --radius-control: 8px;
+  --spacing-rail: 212px;
+  --spacing-topbar: 68px;
+  --spacing-gutter: 28px;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/**
+ * Dark theme.
+ *
+ * Driven by a `data-theme` attribute on <html> rather than the `dark:` variant,
+ * so a component never carries two class lists for the two themes — the token
+ * changes underneath it and the markup stays the same.
+ */
+[data-theme='dark'] {
+  --color-accent: #0a84ff;
+  --color-accent-purple: #bf5af2;
+  --color-accent-green: #30d158;
+  --color-accent-red: #ff453a;
+  --color-accent-orange: #ff9f0a;
+  --color-accent-teal: #63e6e2;
+
+  --color-canvas: #333333;
+  --color-surface: #3b3b3b;
+  --color-surface-muted: #424242;
+
+  --color-ink: rgb(255 255 255);
+  --color-ink-muted: rgb(255 255 255 / 0.4);
+
+  --color-fill-subtle: rgb(255 255 255 / 0.04);
+  --color-fill: rgb(255 255 255 / 0.08);
+  --color-fill-strong: rgb(255 255 255 / 0.12);
+  --color-line: rgb(255 255 255 / 0.1);
+  --color-line-strong: rgb(255 255 255 / 0.2);
+
+  --color-tile-accent-from: #0a84ff;
+  --color-tile-accent-to: #63b2ff;
+  --color-tile-neutral-from: #4a4a4a;
+  --color-tile-neutral-to: #7d7d7d;
+  --color-tile-neutral-ink: #ffffff;
+}

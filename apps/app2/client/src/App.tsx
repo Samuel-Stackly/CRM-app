@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5001/api'
+import { ToastProvider } from './components/toast/ToastProvider'
+import { AppRoutes } from './app/router'
+import { AuthProvider } from './features/auth/AuthProvider'
+import { ThemeProvider } from './theme/ThemeProvider'
 
 export default function App() {
-  const [status, setStatus] = useState('checking…')
-
-  useEffect(() => {
-    fetch(`${API_URL}/health`)
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
-      .then((data: { status: string }) => setStatus(data.status))
-      .catch(() => setStatus('unreachable'))
-  }, [])
-
   return (
-    <main>
-      <h1>App 2</h1>
-      <p>API: {status}</p>
-    </main>
+    <ThemeProvider>
+      <BrowserRouter>
+        {/* Auth sits inside the router because ProtectedRoute redirects, and
+            toasts sit inside auth so a session-expiry message can be shown. */}
+        <AuthProvider>
+          <ToastProvider>
+            <AppRoutes />
+          </ToastProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

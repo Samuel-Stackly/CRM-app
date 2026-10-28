@@ -2,10 +2,10 @@
 
 Each app lives under `apps/<name>/` with its own `client/` and `server/`.
 
-| App    | Folder        | Client | Server |
-| ------ | ------------- | ------ | ------ |
-| `crm`  | `apps/crm`    | 5173   | 5000   |
-| `app2` | `apps/app2`   | 5174   | 5001   |
+| App    | Folder        | Client | Server | Setup                                   |
+| ------ | ------------- | ------ | ------ | --------------------------------------- |
+| `crm`  | `apps/crm`    | 5173   | 5000   | Mini CRM                                |
+| `app2` | `apps/app2`   | 5174   | 5001   | ShopDesk — [README](apps/app2/README.md) |
 
 ## Switching the active app
 
