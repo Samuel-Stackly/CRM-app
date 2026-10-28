@@ -50,15 +50,23 @@ common source of "works locally, breaks live" failures. It is designed for from 
 ### 1.3 Repository layout
 
 ```
-mini-crm/
-├── client/          React + Vite + TypeScript
-├── server/          Express + TypeScript
-├── docs/            RAW_DOC, PRD, DESIGN_SPEC, ARCHITECTURE, Figma exports
+workspace/
+├── apps/
+│   ├── crm/
+│   │   ├── client/      React + Vite + TypeScript
+│   │   └── server/      Express + TypeScript
+│   └── app2/            second app (same client/server shape)
+├── apps.config.json     names the active app and each app's ports
+├── scripts/run.mjs      runs an npm script in the active app
+├── package.json         root scripts only
+├── docs/                RAW_DOC, PRD, DESIGN_SPEC, ARCHITECTURE, Figma exports
 └── .gitignore
 ```
 
-Two independent npm projects, no workspace tooling. The orphan root `package-lock.json`
-(empty `packages{}`, no manifest) should be deleted.
+Each app's client and server stay two independent npm projects, with no workspace
+tooling. The root `package.json` only dispatches to the app named by `activeApp` in
+`apps.config.json`; switching apps is a one-line change there and nothing inside an
+app depends on it.
 
 ### 1.4 Runtime versions
 Node 20 LTS on both sides. The server targets ES2022 with `module: NodeNext`, which means
